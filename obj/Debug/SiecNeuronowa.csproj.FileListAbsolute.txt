@@ -1,0 +1,6 @@
+c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\bin\Debug\SiecNeuronowa.exe.config
+c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\bin\Debug\SiecNeuronowa.exe
+c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\bin\Debug\SiecNeuronowa.pdb
+c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.csprojResolveAssemblyReference.cache
+c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.exe
+c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.pdb
