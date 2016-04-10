@@ -8,34 +8,59 @@ namespace SiecNeuronowa
 {
     class Program
     {
+       
+       
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Wig.txt");
-            List<double> liczby = new List<double>();
+            int bwynik = readWynik();
+            List<double> liczby = readValues();
 
+            Network myNetwork = new Network(liczby, false, bwynik);
+            double wynik = myNetwork.getWynik();
+            myNetwork.learning();
+            /*for (int i = 0; i < liczby.Count; i++)
+            {
+                Console.WriteLine(liczby[i]);
+            }*/
 
-            Neuron neuron = new Neuron(5);
+           
             
-            for(int i =0; i< lines.Length; i++)
-                liczby.Add(double.Parse(lines[i]));
-
-            neuron.setValues(liczby);
-
-            List<Double> _wagi = neuron.getWeights();
-            List<Double> _wejscia = neuron.getValues();
-            for (int i = 0; i < _wagi.Count; i++)
-            {
-                Console.Write(_wagi[i]);
-                Console.Write("\n");
-            }
-            Console.WriteLine();
-
-            for (int i = 0; i < _wejscia.Count; i++)
-            {
-                Console.Write(_wejscia[i]);
-                Console.Write("\n");
-            }
+            Console.WriteLine(wynik.ToString("F20",
+                  System.Globalization.CultureInfo.CreateSpecificCulture("es-ES")));
+            Console.WriteLine(bwynik.ToString());
             Console.ReadKey();
+
+            
+
+        }
+
+
+        private static List<double> readValues()
+        {
+            List<double> values = new List<double>();
+            string[] lines = System.IO.File.ReadAllLines(@"Notowania\1.txt");
+
+
+            for (int i = 0; i < lines.Length-1; i++)
+                values.Add(double.Parse(lines[i]));
+            
+            
+            return values;
+
+        }
+        private static int readWynik()
+        {
+            
+            string[] lines = System.IO.File.ReadAllLines(@"Notowania\1.txt");
+            if (lines[lines.Length - 1] == "true")
+                return 1;
+            else if (lines[lines.Length - 1] == "false")
+                return -1;
+            else
+                return 0;
+
+            
         }
     }
+
 }
