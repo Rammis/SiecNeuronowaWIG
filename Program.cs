@@ -38,7 +38,7 @@ namespace SiecNeuronowa
         private static List<double> readValues()
         {
             List<double> values = new List<double>();
-            string[] lines = System.IO.File.ReadAllLines(@"Notowania\1.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"Notowania\3.txt");
 
 
             for (int i = 0; i < lines.Length-1; i++)
@@ -51,7 +51,7 @@ namespace SiecNeuronowa
         private static int readWynik()
         {
             
-            string[] lines = System.IO.File.ReadAllLines(@"Notowania\1.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"Notowania\3.txt");
             if (lines[lines.Length - 1] == "true")
                 return 1;
             else if (lines[lines.Length - 1] == "false")
