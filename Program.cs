@@ -12,8 +12,8 @@ namespace SiecNeuronowa
        
         static void Main(string[] args)
         {
-            int bwynik = readWynik();
-            List<double> liczby = readValues();
+            int bwynik = readWynik(); //oczekiwany wynik
+            List<double> liczby = readValues(); //szczytujemy wyniki
 
             Network myNetwork = new Network(liczby, false, bwynik);
             double wynik = myNetwork.getWynik();

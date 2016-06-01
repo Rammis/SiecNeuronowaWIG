@@ -11,7 +11,7 @@ namespace SiecNeuronowa
         List<Neuron> pierwsza = new List<Neuron>();
         List<Neuron> druga = new List<Neuron>();
         Neuron wynikowy;
-        List<Double> values = new List<Double>();
+        List<Double> values = new List<Double>(); //wartosci poczatkowe
         int wynikOczekiwany;
         const double wzrost = 0.99999;
         const double spadek = -0.99999;
@@ -52,11 +52,11 @@ namespace SiecNeuronowa
 
             for (int i = 0; i < 3; i++)
             {
-                druga[i].setValues(pierwszaWarstwa);
+                druga[i].setValues(pierwszaWarstwa); //wyniki pierwszej warsty do drugiej
                 drugaWarstwa.Add(druga[i].getWyjscie());
 
             }
-            wynikowy.setValues(drugaWarstwa);
+            wynikowy.setValues(drugaWarstwa); //druga do trzeciej
 
             wynik = wynikowy.getWyjscie();
 
@@ -64,7 +64,6 @@ namespace SiecNeuronowa
 
             return wynik;
         }
-      
         public void learning(){
             
             double deltaOgolna;
@@ -79,7 +78,21 @@ namespace SiecNeuronowa
             List<Double> wagi8 = new List<Double>();
             List<Double> wagi9 = new List<Double>();
 
-            wagi1 = wynikowy.getWeights();
+            List<List<Double>> wagi = new List<List<Double>>();
+
+            //wagi.Add(wynikowy.getWeights());
+
+            //for (int i = 0; i < druga.Count; i++)
+            //{
+            //    wagi.Add(druga[i].getWeights());
+            //}
+
+            //for (int i = 0; i < pierwsza.Count; i++)
+            //{
+            //    wagi.Add(pierwsza[i].getWeights());
+            //}
+
+             wagi1 = wynikowy.getWeights();
             wagi2 = druga[0].getWeights();
             wagi3 = druga[1].getWeights();
             wagi4 = druga[2].getWeights();
@@ -89,9 +102,11 @@ namespace SiecNeuronowa
             wagi8 = pierwsza[3].getWeights();
             wagi9 = pierwsza[4].getWeights();
 
+
+
             List<Double> delty = new List<Double>();
 
-            if (wynikOczekiwany == 1)
+            if (wynikOczekiwany == 1) //obliczamy deltę
                 deltaOgolna = wzrost - wynik;
             else if (wynikOczekiwany == -1)
                 deltaOgolna = spadek - wynik;
