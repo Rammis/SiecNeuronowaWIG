@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SiecNeuronowa
 {
     class Program
     {
-       
-       
-        static void Main(string[] args)
-        {
-            int bwynik = readWynik(); //oczekiwany wynik
-            List<double> liczby = readValues(); //szczytujemy wyniki
 
-            Network myNetwork = new Network(liczby, false, bwynik);
-            double wynik = myNetwork.getWynik();
-            myNetwork.learning();
+       [STAThread]
+        static void Main(string[] args){
+
+            //int bwynik = readWynik();
+            //List<double> liczby = readValues();
+
+            //Network myNetwork = new Network(liczby, false, bwynik);
+            //double wynik = myNetwork.getWynik();
+            //myNetwork.learning();
             /*for (int i = 0; i < liczby.Count; i++)
             {
                 Console.WriteLine(liczby[i]);
@@ -25,11 +26,13 @@ namespace SiecNeuronowa
 
            
             
-            Console.WriteLine(wynik.ToString("F20",
-                  System.Globalization.CultureInfo.CreateSpecificCulture("es-ES")));
-            Console.WriteLine(bwynik.ToString());
-            Console.ReadKey();
-
+            //Console.WriteLine(wynik.ToString("F20",
+            //      System.Globalization.CultureInfo.CreateSpecificCulture("es-ES")));
+            //Console.WriteLine(bwynik.ToString());
+            //Console.ReadKey();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new WigGui());
             
 
         }

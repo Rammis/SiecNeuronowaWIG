@@ -4,3 +4,13 @@ c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronow
 c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.csprojResolveAssemblyReference.cache
 c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.exe
 c:\users\johnny\documents\visual studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.pdb
+C:\Users\Katarzyna\Documents\BIAI\bin\Debug\SiecNeuronowa.exe.config
+C:\Users\Katarzyna\Documents\BIAI\obj\Debug\SiecNeuronowa.exe
+C:\Users\Katarzyna\Documents\BIAI\obj\Debug\SiecNeuronowa.pdb
+C:\Users\Katarzyna\Documents\BIAI\bin\Debug\SiecNeuronowa.exe
+C:\Users\Katarzyna\Documents\BIAI\bin\Debug\SiecNeuronowa.pdb
+C:\Users\Katarzyna\Documents\BIAI\obj\Debug\SiecNeuronowa.csprojResolveAssemblyReference.cache
+C:\Users\Katarzyna\Documents\BIAI\obj\Debug\SiecNeuronowa.WigGui.resources
+C:\Users\Katarzyna\Documents\BIAI\obj\Debug\SiecNeuronowa.csproj.GenerateResource.Cache
+C:\Users\Johnny\Documents\Visual Studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.WigGui.resources
+C:\Users\Johnny\Documents\Visual Studio 2013\Projects\SiecNeuronowa\SiecNeuronowa\obj\Debug\SiecNeuronowa.csproj.GenerateResource.Cache
