@@ -16,12 +16,15 @@ namespace SiecNeuronowa
 {
     public partial class WigGui : Form
     {
-        public List<double> daneWejsciowe = new List<double>();
+        
+        List<double> daneWejsciowe = new List<double>();
         int ilosc_danych;
         int ilosc_pierwsza_warstwa;
         int ilosc_druga_warstwa;
         int ilosc_nauk;
+        int wynik_oczekiwany;
         String nazwa_pliku;
+        String sciezka_pliku;
         bool czyNowa;
         
 
@@ -53,7 +56,8 @@ namespace SiecNeuronowa
 
         private void wczytajDane_Click(object sender, EventArgs e)
         {
-            
+            chart1.Series.Clear();
+            daneWejsciowe.Clear();
             Dictionary<string, int> ExceptionMessages = new Dictionary<string, int>();
            
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -63,12 +67,15 @@ namespace SiecNeuronowa
                 
                 string[] lines = File.ReadAllLines(file_name);
 
-                for (int i = 0; i < lines.Count(); i += 2)
+                for (int i = 0; i < lines.Count()-1; i += 2)
                 {
                     ExceptionMessages.Add(lines[i + 1], int.Parse(lines[i]));
                     daneWejsciowe.Add(double.Parse(lines[i]));
                 }
-
+                if (lines[lines.Count()-1] == "true")
+                    wynik_oczekiwany = 1;
+                else
+                    wynik_oczekiwany = -1;
 
                 chart1.Series.Add("WIG20");
                 foreach (KeyValuePair<string, int> exception in ExceptionMessages)
@@ -85,18 +92,25 @@ namespace SiecNeuronowa
         private void nauka_Click(object sender, EventArgs e)
         {
             myNetwork.learning();
+            myNetwork.saveWeights();
+            ilosc_nauk++;
         }
 
         private void prognozuj_Click(object sender, EventArgs e)
         {
-            myNetwork = new Network(daneWejsciowe, false, 0);
+            myNetwork = new Network(daneWejsciowe, czyNowa, wynik_oczekiwany, ilosc_pierwsza_warstwa, ilosc_druga_warstwa, daneWejsciowe.Count, sciezka_pliku, ilosc_nauk);
+            if (czyNowa)
+                czyNowa = false;
             double wynik = myNetwork.getWynik();
+            
             label_wartosc_wynik_prognozowany.Text = wynik.ToString();
+            label_wartosc_wynik_oczekiwany.Text = wynik_oczekiwany.ToString();
             button_nauka.Enabled = true;
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
+            czyNowa = true;
             ilosc_danych = int.Parse(comboBox_ilosc_danych.Text);
             ilosc_pierwsza_warstwa = int.Parse(comboBox_pierwsza_warstwa.Text);
             ilosc_druga_warstwa = int.Parse(comboBox_druga_warstwa.Text);
@@ -106,6 +120,7 @@ namespace SiecNeuronowa
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK && saveFileDialog1.FileName != "")
             {
+                sciezka_pliku = saveFileDialog1.FileName;
                 using (Stream s = File.Open(saveFileDialog1.FileName, FileMode.OpenOrCreate))
                 using (StreamWriter sw = new StreamWriter(s))
                 {
@@ -114,14 +129,18 @@ namespace SiecNeuronowa
                     sw.WriteLine(ilosc_druga_warstwa);
                     sw.WriteLine(ilosc_nauk);
                     nazwa_pliku = System.IO.Path.GetFileName(saveFileDialog1.FileName);
-                    nazwa_pliku = nazwa_pliku.Remove(nazwa_pliku.Count() - 4);
+                   
                 }
+
+              
 
                 label_wartosc_ilosc_danych.Text = ilosc_danych.ToString();
                 label_wartosc_pierwsza_warstwa.Text = ilosc_pierwsza_warstwa.ToString();
                 label_wartosc_druga_warstwa.Text = ilosc_druga_warstwa.ToString();
                 label_wartosc_ilosc_nauk.Text = ilosc_nauk.ToString();
                 label_wartosc_nazwa_sieci.Text = nazwa_pliku;
+
+
 
                 load_Components();
 
@@ -165,6 +184,10 @@ namespace SiecNeuronowa
             comboBox_druga_warstwa.Enabled = true;
             button_zatwierdz_nowa_siec.Enabled = true;
 
+            label_wartosc_wynik_prognozowany.Text = "";
+
+            daneWejsciowe.Clear();
+            chart1.Series.Clear();
 
         }
 
@@ -174,6 +197,7 @@ namespace SiecNeuronowa
             {
                 String file_name;
                 file_name = openFileDialog1.FileName;
+                sciezka_pliku = openFileDialog1.FileName;
                 nazwa_pliku = System.IO.Path.GetFileName(openFileDialog1.FileName);
                 nazwa_pliku = nazwa_pliku.Remove(nazwa_pliku.Count() - 4);
                 string[] lines = File.ReadAllLines(file_name);

@@ -13,27 +13,34 @@ namespace SiecNeuronowa
         int iloscWejsc;
         bool creating;
         int numberOfNeuron;
-        int type; // 0 - wejsciowy, 1 - srodkowy
+        int type; // 0 - wejsciowy, 1 - srodkowy, 2 - koncowy
         double wyjscie;
+
+        
 
         const double beta = 0.5;
 
-        public Neuron(bool _creating, int _numberOfNeuron, int _iloscWejsc, int _type)
+        public Neuron(int _numberOfNeuron, int _iloscWejsc, int _type, List<Double> _wagi)
         {
-            creating = _creating;
+         
             numberOfNeuron = _numberOfNeuron;
             iloscWejsc = _iloscWejsc;
             type = _type;
+            wagi = _wagi;
 
-            if(creating)
-            generateRandomWeights();
-            else
+            if(_wagi == null)
             {
-                getWeightsFromFile();
+               wagi = new List<Double>();
+                generateRandomWeights();
             }
+            
+            
+
+            
 
         }
 
+       
         public void setValues(List<Double> _wejscia){
 
             for (int i = 0; i < _wejscia.Count; i++)
@@ -53,7 +60,7 @@ namespace SiecNeuronowa
                     wagi.Add(tmp);
                 }
 
-                setWeightsToFile();
+               
             }
 
         public List<Double> getWeights()
@@ -69,32 +76,12 @@ namespace SiecNeuronowa
         public void setWeights(List<double> _weights)
         {
             wagi = _weights;
-            setWeightsToFile();
         }
 
-        private void getWeightsFromFile()
+        public void loadWeightFromFile()
         {
-            string path = "Wagi\\" + type.ToString() + numberOfNeuron.ToString() + ".txt";
-            string[] lines = System.IO.File.ReadAllLines(@path);
 
 
-            for (int i = 0; i < lines.Length; i++)
-                wagi.Add(double.Parse(lines[i]));
-
-        }
-        public void setWeightsToFile()
-        {
-          
-            string path =  "Wagi\\" + type.ToString() + numberOfNeuron.ToString() + ".txt";
-
-            using (System.IO.StreamWriter file =
-           new System.IO.StreamWriter(@path))
-            {
-
-                for (int i = 0; i < wagi.Count; i++)
-                    file.WriteLine(wagi[i].ToString());
-
-            }
         }
 
         public double getWyjscie()
