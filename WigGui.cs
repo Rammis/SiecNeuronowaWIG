@@ -58,7 +58,7 @@ namespace SiecNeuronowa
         {
             chart1.Series.Clear();
             daneWejsciowe.Clear();
-            Dictionary<string, int> ExceptionMessages = new Dictionary<string, int>();
+            Dictionary<string, double> ExceptionMessages = new Dictionary<string, double>();
            
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -69,7 +69,7 @@ namespace SiecNeuronowa
 
                 for (int i = 0; i < lines.Count()-1; i += 2)
                 {
-                    ExceptionMessages.Add(lines[i + 1], int.Parse(lines[i]));
+                    ExceptionMessages.Add(lines[i + 1], double.Parse(lines[i]));
                     daneWejsciowe.Add(double.Parse(lines[i]));
                 }
                 if (lines[lines.Count()-1] == "true")
@@ -78,7 +78,7 @@ namespace SiecNeuronowa
                     wynik_oczekiwany = -1;
 
                 chart1.Series.Add("WIG20");
-                foreach (KeyValuePair<string, int> exception in ExceptionMessages)
+                foreach (KeyValuePair<string, double> exception in ExceptionMessages)
                     chart1.Series["WIG20"].Points.AddXY(exception.Key, exception.Value);
 
                 chart1.Series["WIG20"].ChartType = SeriesChartType.Line;
