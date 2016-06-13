@@ -25,10 +25,12 @@ namespace SiecNeuronowa
         int wynik_oczekiwany;
         String nazwa_pliku;
         String sciezka_pliku;
-        bool czyNowa;
-        
-
+        bool czyNowa;      
         Network myNetwork;
+        int zle=0;
+        int dopsz = 0;
+        double procent;
+
         public WigGui()
         {
             InitializeComponent();
@@ -95,11 +97,29 @@ namespace SiecNeuronowa
 
         private void nauka_Click(object sender, EventArgs e)
         {
+            
             myNetwork.learning();
             myNetwork.saveWeights();
             ilosc_nauk++;
-            MessageBox.Show("Nauka zakończona powodzeniem");
+            
             label_wartosc_ilosc_nauk.Text = ilosc_nauk.ToString();
+            double oczekiwana = Double.Parse(label_wartosc_wynik_oczekiwany.Text);
+            double prognozowana = Double.Parse(label_wartosc_wynik_prognozowany.Text);
+            int znak_oczekiwana = Math.Sign(oczekiwana);
+            int znak_prognozowana = Math.Sign(prognozowana);
+            if (znak_oczekiwana == znak_prognozowana)
+            {
+                dopsz++;
+            }
+            else
+            {
+                zle++;
+            }
+
+            procent = (Convert.ToDouble(zle) / Convert.ToDouble(ilosc_nauk)) * 100;
+
+            MessageBox.Show(string.Format("Nauka zakończona powodzeniem. Procent {0}",procent));
+
         }
 
         private void prognozuj_Click(object sender, EventArgs e)
@@ -122,8 +142,6 @@ namespace SiecNeuronowa
             ilosc_druga_warstwa = int.Parse(comboBox_druga_warstwa.Text);
             ilosc_nauk = 0;
 
-
-
             if (saveFileDialog1.ShowDialog() == DialogResult.OK && saveFileDialog1.FileName != "")
             {
                 sciezka_pliku = saveFileDialog1.FileName;
@@ -136,25 +154,18 @@ namespace SiecNeuronowa
                     sw.WriteLine(ilosc_nauk);
                     nazwa_pliku = System.IO.Path.GetFileName(saveFileDialog1.FileName);
                    
-                }
-
-              
+                }                             
 
                 label_wartosc_ilosc_danych.Text = ilosc_danych.ToString();
                 label_wartosc_pierwsza_warstwa.Text = ilosc_pierwsza_warstwa.ToString();
                 label_wartosc_druga_warstwa.Text = ilosc_druga_warstwa.ToString();
                 label_wartosc_ilosc_nauk.Text = ilosc_nauk.ToString();
                 label_wartosc_nazwa_sieci.Text = nazwa_pliku;
-
-
-
                 load_Components();
 
             }
             else
-                MessageBox.Show("Nie podałeś nazwy pliku!");
-
-           
+                MessageBox.Show("Nie podałeś nazwy pliku!");           
             
         }
 
@@ -228,7 +239,8 @@ namespace SiecNeuronowa
             }
            
         }
-    private void load_Components(){
+    private void load_Components()
+    {
         button_wczytaj_dane.Enabled = true;
         button_wczytaj_siec.Enabled = false;
         button_zakoncz_symulacje.Enabled = true;
@@ -258,13 +270,7 @@ namespace SiecNeuronowa
         tableLayoutPanel_siec.Visible = true;
         tableLayoutPanel_wyniki.Visible = true;
 
-    }
-       
-       
-
-       
-       
-
-        
+    }    
+          
     }
 }
