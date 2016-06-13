@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button_wczytaj_dane = new System.Windows.Forms.Button();
             this.button_nauka = new System.Windows.Forms.Button();
@@ -79,19 +79,20 @@
             // 
             // chart1
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.chart1.Legends.Add(legend10);
-            this.chart1.Location = new System.Drawing.Point(12, 289);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(12, 307);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(859, 472);
+            this.chart1.Size = new System.Drawing.Size(859, 422);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             this.chart1.Visible = false;
             // 
             // button_wczytaj_dane
             // 
+            this.button_wczytaj_dane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_wczytaj_dane.Enabled = false;
             this.button_wczytaj_dane.Location = new System.Drawing.Point(979, 183);
             this.button_wczytaj_dane.Name = "button_wczytaj_dane";
@@ -104,6 +105,7 @@
             // 
             // button_nauka
             // 
+            this.button_nauka.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_nauka.Enabled = false;
             this.button_nauka.Location = new System.Drawing.Point(979, 342);
             this.button_nauka.Name = "button_nauka";
@@ -116,6 +118,7 @@
             // 
             // button_prognozuj
             // 
+            this.button_prognozuj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_prognozuj.Enabled = false;
             this.button_prognozuj.Location = new System.Drawing.Point(979, 264);
             this.button_prognozuj.Name = "button_prognozuj";
@@ -233,7 +236,7 @@
             this.label_wynik_prognozowany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label_wynik_prognozowany.AutoSize = true;
             this.label_wynik_prognozowany.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_wynik_prognozowany.Location = new System.Drawing.Point(4, 20);
+            this.label_wynik_prognozowany.Location = new System.Drawing.Point(4, 17);
             this.label_wynik_prognozowany.Name = "label_wynik_prognozowany";
             this.label_wynik_prognozowany.Size = new System.Drawing.Size(272, 25);
             this.label_wynik_prognozowany.TabIndex = 11;
@@ -245,7 +248,7 @@
             // 
             this.label_wartosc_wynik_prognozowany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label_wartosc_wynik_prognozowany.AutoSize = true;
-            this.label_wartosc_wynik_prognozowany.Location = new System.Drawing.Point(4, 91);
+            this.label_wartosc_wynik_prognozowany.Location = new System.Drawing.Point(4, 82);
             this.label_wartosc_wynik_prognozowany.Name = "label_wartosc_wynik_prognozowany";
             this.label_wartosc_wynik_prognozowany.Size = new System.Drawing.Size(272, 13);
             this.label_wartosc_wynik_prognozowany.TabIndex = 12;
@@ -254,22 +257,27 @@
             // 
             // panel_konfiguracja
             // 
+            this.panel_konfiguracja.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_konfiguracja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_konfiguracja.Controls.Add(this.panel_wczytaj_siec);
             this.panel_konfiguracja.Controls.Add(this.panel_nowa_siec);
             this.panel_konfiguracja.Controls.Add(this.label_konfiguracja_sieci);
             this.panel_konfiguracja.Location = new System.Drawing.Point(12, 12);
             this.panel_konfiguracja.Name = "panel_konfiguracja";
-            this.panel_konfiguracja.Size = new System.Drawing.Size(1240, 164);
+            this.panel_konfiguracja.Size = new System.Drawing.Size(1235, 164);
             this.panel_konfiguracja.TabIndex = 13;
             // 
             // panel_wczytaj_siec
             // 
+            this.panel_wczytaj_siec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_wczytaj_siec.AutoSize = true;
             this.panel_wczytaj_siec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_wczytaj_siec.Controls.Add(this.label_wczytaj_siec);
             this.panel_wczytaj_siec.Controls.Add(this.button_wczytaj_siec);
             this.panel_wczytaj_siec.Location = new System.Drawing.Point(624, 40);
             this.panel_wczytaj_siec.Name = "panel_wczytaj_siec";
+            this.panel_wczytaj_siec.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.panel_wczytaj_siec.Size = new System.Drawing.Size(598, 117);
             this.panel_wczytaj_siec.TabIndex = 21;
             // 
@@ -297,6 +305,8 @@
             // 
             // panel_nowa_siec
             // 
+            this.panel_nowa_siec.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_nowa_siec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_nowa_siec.Controls.Add(this.button_zatwierdz_nowa_siec);
             this.panel_nowa_siec.Controls.Add(this.label_nowa_ilosc_danych);
@@ -449,6 +459,7 @@
             // 
             // button_zakoncz_symulacje
             // 
+            this.button_zakoncz_symulacje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_zakoncz_symulacje.Location = new System.Drawing.Point(979, 418);
             this.button_zakoncz_symulacje.Name = "button_zakoncz_symulacje";
             this.button_zakoncz_symulacje.Size = new System.Drawing.Size(188, 52);
@@ -498,6 +509,7 @@
             // 
             // tableLayoutPanel_wyniki
             // 
+            this.tableLayoutPanel_wyniki.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel_wyniki.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel_wyniki.ColumnCount = 1;
             this.tableLayoutPanel_wyniki.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -505,14 +517,14 @@
             this.tableLayoutPanel_wyniki.Controls.Add(this.label_wartosc_wynik_prognozowany, 0, 1);
             this.tableLayoutPanel_wyniki.Controls.Add(this.label_wynik_oczekiwany, 0, 2);
             this.tableLayoutPanel_wyniki.Controls.Add(this.label_wartosc_wynik_oczekiwany, 0, 3);
-            this.tableLayoutPanel_wyniki.Location = new System.Drawing.Point(933, 486);
+            this.tableLayoutPanel_wyniki.Location = new System.Drawing.Point(933, 491);
             this.tableLayoutPanel_wyniki.Name = "tableLayoutPanel_wyniki";
             this.tableLayoutPanel_wyniki.RowCount = 4;
             this.tableLayoutPanel_wyniki.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_wyniki.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_wyniki.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_wyniki.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel_wyniki.Size = new System.Drawing.Size(280, 263);
+            this.tableLayoutPanel_wyniki.Size = new System.Drawing.Size(280, 238);
             this.tableLayoutPanel_wyniki.TabIndex = 23;
             this.tableLayoutPanel_wyniki.Visible = false;
             // 
@@ -521,7 +533,7 @@
             this.label_wynik_oczekiwany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label_wynik_oczekiwany.AutoSize = true;
             this.label_wynik_oczekiwany.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_wynik_oczekiwany.Location = new System.Drawing.Point(4, 150);
+            this.label_wynik_oczekiwany.Location = new System.Drawing.Point(4, 135);
             this.label_wynik_oczekiwany.Name = "label_wynik_oczekiwany";
             this.label_wynik_oczekiwany.Size = new System.Drawing.Size(272, 25);
             this.label_wynik_oczekiwany.TabIndex = 13;
@@ -532,7 +544,7 @@
             // 
             this.label_wartosc_wynik_oczekiwany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label_wartosc_wynik_oczekiwany.AutoSize = true;
-            this.label_wartosc_wynik_oczekiwany.Location = new System.Drawing.Point(4, 222);
+            this.label_wartosc_wynik_oczekiwany.Location = new System.Drawing.Point(4, 201);
             this.label_wartosc_wynik_oczekiwany.Name = "label_wartosc_wynik_oczekiwany";
             this.label_wartosc_wynik_oczekiwany.Size = new System.Drawing.Size(272, 13);
             this.label_wartosc_wynik_oczekiwany.TabIndex = 14;
@@ -542,7 +554,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1264, 741);
             this.Controls.Add(this.tableLayoutPanel_wyniki);
             this.Controls.Add(this.tableLayoutPanel_siec);
             this.Controls.Add(this.button_zakoncz_symulacje);
@@ -553,8 +566,6 @@
             this.Controls.Add(this.button_wczytaj_dane);
             this.Controls.Add(this.chart1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "WigGui";
             this.Text = "Sieć neuronowa - WIG";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
