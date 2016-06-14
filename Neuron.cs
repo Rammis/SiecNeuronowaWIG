@@ -15,15 +15,16 @@ namespace SiecNeuronowa
         int numberOfNeuron;
         int type; // 0 - wejsciowy, 1 - srodkowy, 2 - koncowy
         double wyjscie;              
-        const double beta = 0.8;
+        double beta;
 
-        public Neuron(int _numberOfNeuron, int _iloscWejsc, int _type, List<Double> _wagi)
+        public Neuron(int _numberOfNeuron, int _iloscWejsc, int _type, List<Double> _wagi, double _beta)
         {
 
             numberOfNeuron = _numberOfNeuron;
             iloscWejsc = _iloscWejsc;
             type = _type;
             wagi = _wagi;
+            beta = _beta;
 
             if (_wagi == null)
             {
@@ -36,7 +37,7 @@ namespace SiecNeuronowa
 
         public void setValues(List<Double> _wejscia)
         {
-
+            wejscia.Clear();
             for (int i = 0; i < _wejscia.Count; i++)
             {
                 wejscia.Add(_wejscia[i]);
@@ -92,6 +93,7 @@ namespace SiecNeuronowa
 
             wyjscie = Math.Tanh(beta*sumator);
 
+            
 
             return wyjscie;
         }

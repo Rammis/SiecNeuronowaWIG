@@ -101,10 +101,27 @@ namespace SiecNeuronowa
 
         private void nauka_Click(object sender, EventArgs e)
         {
-            
-            myNetwork.learning();
-            myNetwork.saveWeights();
-            ilosc_nauk++;
+            //bool prawda = true;
+            //while (prawda)
+            //{
+            //    double wynik = myNetwork.getWynik();
+            //    if (wynik_oczekiwany == 1)
+            //    {
+            //        if (wynik >= 0.99)
+            //        {
+            //            prawda=false;
+            //        }
+            //    }
+            //    else if (wynik_oczekiwany == -1)
+            //    {
+            //        if (wynik <= -0.99)
+            //            prawda = false;
+            //    }
+                    myNetwork.learning();
+                        myNetwork.saveWeights();
+                        ilosc_nauk++;
+            //}
+         
             
             label_wartosc_ilosc_nauk.Text = ilosc_nauk.ToString();
             double oczekiwana = Double.Parse(label_wartosc_wynik_oczekiwany.Text);

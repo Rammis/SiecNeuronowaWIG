@@ -27,7 +27,7 @@ namespace SiecNeuronowa
         const double wzrost = 0.99999;
         const double spadek = -0.99999;
         const double bezZmian = 0;
-        const double parametrN = 0.99;
+        double parametrN = 0.6;
         double wynik;
         String adresPliku;
         String nazwaSieci;        
@@ -44,6 +44,10 @@ namespace SiecNeuronowa
             ilosc_druga = _ilosc_druga;
             ilosc_danych = _ilosc_danych;
             ilosc_nauk = _ilosc_nauk;
+           
+            if (ilosc_nauk > 30)
+                parametrN = 0.6 - (ilosc_nauk % 10) * 0.05;
+                
 
             ilosc_wejsc_pierwsza = _ilosc_danych;
             ilosc_wejsc_druga = ilosc_pierwsza + 1;
@@ -74,7 +78,7 @@ namespace SiecNeuronowa
             wynikowy.setValues(drugaWarstwa); //druga do trzeciej
 
             wynik = wynikowy.getWyjscie();
-            
+           
             return wynik;
         }
         public void learning()
@@ -122,17 +126,36 @@ namespace SiecNeuronowa
             for (int i = 0; i < ilosc_wejsc_druga; i++)
             {
                 for (int j = 0; j < ilosc_druga; j++)
+                {
+                   
+
                     wagi_druga[j][i] = wagi_druga[j][i] + parametrN * delty_druga[j] * (1 - Math.Pow(Math.Tanh(druga[j].getWynik()), 2.0));
+
+                   
+                   
+                }
             }
 
             for (int i = 0; i < ilosc_wejsc_pierwsza; i++)
             {
                 for (int j = 0; j < ilosc_pierwsza; j++)
+                {
+                 
                     wagi_pierwsza[j][i] = wagi_pierwsza[j][i] + parametrN * delty_pierwsza[j] * (1 - Math.Pow(Math.Tanh(pierwsza[j].getWynik()), 2.0));
+                    if (double.IsNaN(wagi_pierwsza[j][i]))
+                        wagi_pierwsza[j][i] = 0;
+                }
             }
-            
+
             for (int i = 0; i < wagi_wynikowy.Count; i++)
+            {
+               
+
                 wagi_wynikowy[i] = wagi_wynikowy[i] + parametrN * deltaOgolna * (1 - Math.Pow(Math.Tanh(wynikowy.getWynik()), 2.0));
+                
+                
+
+            }
 
 
             wynikowy.setWeights(wagi_wynikowy);
@@ -202,7 +225,7 @@ namespace SiecNeuronowa
 
                 for (int j = 0; j < lines.Count(); j++)
                 {
-                    if (lines[j] == "pierwsza")
+                    if (lines[j] == "wynikowy")
                     {
                         wskaznik = j + 1;
                         break;
@@ -218,32 +241,32 @@ namespace SiecNeuronowa
                 for (int i = 0; i < ilosc_pierwsza; i++)
                 {
 
-                    pierwsza.Add(new Neuron(i, ilosc_wejsc_pierwsza, (int)TypesofNeuron.wejsciowy, wagi_pierwsza[i]));
+                    pierwsza.Add(new Neuron(i, ilosc_wejsc_pierwsza, (int)TypesofNeuron.wejsciowy, wagi_pierwsza[i],parametrN));
                     pierwsza[i].setValues(values);
                     
                 }
 
                 for (int i = 0; i < ilosc_druga; i++)
                 {
-                    druga.Add(new Neuron(i, ilosc_wejsc_druga, (int)TypesofNeuron.srodkowy, wagi_druga[i]));
+                    druga.Add(new Neuron(i, ilosc_wejsc_druga, (int)TypesofNeuron.srodkowy, wagi_druga[i],parametrN));
                 }
 
-                wynikowy = new Neuron(0, ilosc_wejsc_trzecia, (int)TypesofNeuron.wynikowy, wagi_wynikowy);
+                wynikowy = new Neuron(0, ilosc_wejsc_trzecia, (int)TypesofNeuron.wynikowy, wagi_wynikowy,parametrN);
             }
             else
             {
                 for (int i = 0; i < ilosc_pierwsza; i++)
                 {
-                    pierwsza.Add(new Neuron(i, ilosc_wejsc_pierwsza, (int)TypesofNeuron.wejsciowy, null));
+                    pierwsza.Add(new Neuron(i, ilosc_wejsc_pierwsza, (int)TypesofNeuron.wejsciowy, null,parametrN));
                     pierwsza[i].setValues(values);
                 }
 
                 for (int i = 0; i < ilosc_druga; i++)
                 {
-                    druga.Add(new Neuron(i, ilosc_wejsc_druga, (int)TypesofNeuron.srodkowy, null));
+                    druga.Add(new Neuron(i, ilosc_wejsc_druga, (int)TypesofNeuron.srodkowy, null,parametrN));
                 }
 
-                wynikowy = new Neuron(0, ilosc_wejsc_trzecia, (int)TypesofNeuron.wynikowy, null);
+                wynikowy = new Neuron(0, ilosc_wejsc_trzecia, (int)TypesofNeuron.wynikowy, null,parametrN);
             }
         }
 
