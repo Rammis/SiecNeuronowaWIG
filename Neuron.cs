@@ -11,7 +11,6 @@ namespace SiecNeuronowa
         List<Double> wagi = new List<Double>();
         List<Double> wejscia = new List<Double>();
         int iloscWejsc;
-        bool creating;
         int numberOfNeuron;
         int type; // 0 - wejsciowy, 1 - srodkowy, 2 - koncowy
         double wyjscie;              
@@ -51,7 +50,7 @@ namespace SiecNeuronowa
             Thread.Sleep(30); //aby losowało różne liczby
             for (int i = 0; i < iloscWejsc; i++)
             {
-                double tmp = r.NextDouble() * (1 - (-1)) - 1;
+                double tmp = r.NextDouble();
                 wagi.Add(tmp);
             }
 
@@ -91,8 +90,7 @@ namespace SiecNeuronowa
 
             }
 
-            wyjscie = Math.Tanh(beta*sumator);
-
+            wyjscie = 1 / (1 + Math.Exp((-sumator)));
             
 
             return wyjscie;
